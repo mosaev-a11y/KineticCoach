@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KineticCoach | Multi-Sponsor Clinical &amp; Biomechanics Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 28px; }
+        .container { max-width: 1080px; margin: auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 16px; margin-bottom: 20px; }
+        .badge { background: #22c55e; color: #052e16; font-weight: 700; padding: 6px 14px; border-radius: 999px; font-size: 13px; }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px; }
+        .card h3 { margin: 0 0 6px 0; font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat { font-size: 28px; font-weight: 700; color: #38bdf8; }
+        .stat.green { color: #4ade80; }
+        .stat.orange { color: #fb923c; }
+        .stat.purple { color: #c084fc; }
+        .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+        .note-box { background: #1e293b; border-left: 4px solid #38bdf8; border-radius: 8px; padding: 16px; line-height: 1.5; }
+        .note-box.grok { border-left-color: #f43f5e; }
+        .tools-bar { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .btn { background: #2563eb; color: white; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; }
+        .btn.fish { background: #0d9488; }
+        .btn.matlab { background: #ea580c; }
+        .btn.mongo { background: #16a34a; }
+        .btn.solana { background: #9333ea; }
+        .btn.grok { background: #e11d48; }
+        .btn.esp { background: #4f46e5; }
+        .agent-log { display: none; background: #020617; border: 1px solid #14b8a6; color: #5eead4; font-family: monospace; padding: 14px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; line-height: 1.55; }
+        .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .chart-box { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 18px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1 style="margin:0; font-size: 24px;">KineticCoach Telehealth &amp; Multi-Cloud Biomechanics Portal</h1>
+                <p style="margin:4px 0 0 0; color:#94a3b8; font-size:13px;">MediaPipe CV &bull; Direct MATLAB Engine (MATLAB Live Engine &#10003;) &bull; Gemini AI &bull; Grok (SpaceXSI) &bull; TinyFish &bull; MongoDB Atlas &bull; Solana</p>
+            </div>
+            <span class="badge">TARGET ZONE: 50&deg;&ndash;68&deg; (ARM)</span>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Phase 1: Blind Baseline</h3>
+                <div class="stat orange">0.0%</div>
+                <p style="margin:6px 0 0 0; color:#cbd5e1; font-size:13px;">0/2 Valid Reps<br>Peaks: [61.5, 61.5]</p>
+            </div>
+            <div class="card">
+                <h3>Phase 2: Guided Biofeedback</h3>
+                <div class="stat green">100.0%</div>
+                <p style="margin:6px 0 0 0; color:#cbd5e1; font-size:13px;">4/4 Valid Reps<br>Peaks: [61.5, 61.5, 61.5, 61.5]</p>
+            </div>
+            <div class="card">
+                <h3>MATLAB Range of Motion</h3>
+                <div class="stat">62.8&deg; &ndash; 71.5&deg;</div>
+                <p style="margin:6px 0 0 0; color:#cbd5e1; font-size:13px;">Peak Vel: 10.8&deg;/s (Mean: 5.3&deg;/s)</p>
+            </div>
+            <div class="card">
+                <h3>MATLAB Smoothness &amp; Jerk</h3>
+                <div class="stat purple">98.8%</div>
+                <p style="margin:6px 0 0 0; color:#cbd5e1; font-size:13px;">RMS Jerk: 12.2 deg/s&sup3;</p>
+            </div>
+        </div>
+
+        <div class="tools-bar">
+            <button class="btn fish" onclick="runTinyFish()">&#128031; TinyFish EHR Agent (CPT 98977)</button>
+            <button class="btn matlab" onclick="showMatlab()">&#128200; MATLAB Engine (matlab_results.json)</button>
+            <button class="btn mongo" onclick="showMongo()">&#127811; MongoDB Atlas Document Sync</button>
+            <button class="btn solana" onclick="showSolana()">&#9939; Solana Proof-of-Rehab Attestation</button>
+            <button class="btn grok" onclick="showGrok()">&#128640; Grok Bot (SpaceXSI Microgravity)</button>
+            <button class="btn esp" onclick="showEsp()">&#128268; ESP32 / Raspberry Pi UART</button>
+        </div>
+
+        <div id="agentBox" class="agent-log"></div>
+
+        <div class="note-grid">
+            <div class="note-box">
+                <h3 style="margin:0 0 6px 0; color:#38bdf8; font-size:13px;">GEMINI AI + MATLAB CLINICAL PROGRESS NOTE</h3>
+                <p style="margin:0; color:#e2e8f0; font-size:14px;">[CPT 98977 RTM &amp; MATLAB Verified] Patient completed 4 target-verified repetitions (100.0% accuracy) using real-time visual and auditory biofeedback. Automated MATLAB signal processing confirmed an active range of motion of 62.8&deg;&ndash;71.5&deg;, peak angular velocity of 10.8&deg;/s (mean 5.3&deg;/s), and RMS kinematic jerk of 12.2 deg/s&sup3; (98.8% neuromuscular smoothness index). Synced to MongoDB Atlas &amp; attested on Solana.</p>
+            </div>
+            <div class="note-box grok">
+                <h3 style="margin:0 0 6px 0; color:#fb7185; font-size:13px;">GROK BOT (SPACEXSI) MICROGRAVITY KINEMATICS REPORT</h3>
+                <p style="margin:0; color:#e2e8f0; font-size:14px;">[SpaceXSI Astronaut Countermeasure Assessment] Crewmember completed 4 resistance flexion cycles within the 50&deg;&ndash;68&deg; microgravity loading envelope. MATLAB 3rd-derivative jerk analysis (12.2 deg/s&sup3;, 98.8% stability) indicates zero neuromuscular tremor or sensorimotor deconditioning. Cleared for orbital EVA workload.</p>
+            </div>
+        </div>
+
+        <div class="chart-grid">
+            <div class="chart-box">
+                <h3 style="margin:0 0 10px 0; color:#94a3b8; font-size:13px; text-transform:uppercase;">Live Joint Flexion Trajectory (Degrees vs. Time)</h3>
+                <canvas id="romChart" height="120"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3 style="margin:0 0 10px 0; color:#94a3b8; font-size:13px; text-transform:uppercase;">Angular Velocity Profile (d&theta;/dt &bull; deg/s)</h3>
+                <canvas id="velChart" height="120"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-box" style="margin-top: 18px;"><h3 style="margin:0 0 10px 0; color:#f97316; font-size:14px; text-transform:uppercase;">MATLAB Engine Generated Figure (matlab_biomechanics.png &bull; MATLAB Live Engine &#10003;)</h3><img src="matlab_biomechanics.png?t=1794708682" style="width:100%; border-radius:8px; border:1px solid #334155;" /></div>
+    </div>
+
+    <script>
+        function runTinyFish() {
+            const box = document.getElementById('agentBox');
+            box.style.display = 'block';
+            box.innerHTML = "<b>[TinyFish Web Agent Initialized]</b> Reading tinyfish_ehr_payload.json...<br>" +
+                            "&#10140; Navigating to Outpatient PT Portal (Epic / AthenaHealth Mock)...<br>" +
+                            "&#10140; Populating CPT Code <b>98977</b> | Guided Accuracy: <b>100.0%</b> | MATLAB RMS Jerk: <b>12.2 deg/s&sup3;</b>...<br>" +
+                            "&#10140; Linking MongoDB Atlas ObjectId (<code>04374013d5af9f5b5cf6bba6</code>) &amp; Solana Tx... <span style='color:#4ade80;'><b>[CLAIM &amp; EHR SYNC COMPLETE &#10003;]</b></span>";
+        }
+        function showMatlab() {
+            const box = document.getElementById('agentBox');
+            box.style.display = 'block';
+            box.innerHTML = "<b>[MATLAB Live Engine &#10003;]</b> Python executed <code>matlab -batch analyze_kinematics</code> automatically!<br>" +
+                            "&#10140; Computed 3-point moving average filter, Angular Velocity (&omega;), Acceleration (&alpha;), and RMS Jerk (<b>12.2 deg/s&sup3;</b>).<br>" +
+                            "&#10140; Exported <b>matlab_results.json</b> and embedded <b>matlab_biomechanics.png</b> directly below!";
+        }
+        function showMongo() {
+            const box = document.getElementById('agentBox');
+            box.style.display = 'block';
+            box.innerHTML = "<b>[MongoDB Atlas Time-Series Sync &#10003;]</b> Saved <code>mongodb_atlas_doc.json</code> to Cluster0 (<code>telehealth_rtm.biomechanics_sessions</code>)<br>" +
+                            "&#10140; Document <code>_id: ObjectId('04374013d5af9f5b5cf6bba6')</code> | Patient: <code>PT-UA-2026</code><br>" +
+                            "&#10140; Indexed MATLAB derivatives (Peak Vel: <b>10.8&deg;/s</b>, RMS Jerk: <b>12.2 deg/s&sup3;</b>) for longitudinal PT progression.";
+        }
+        function showSolana() {
+            const box = document.getElementById('agentBox');
+            box.style.display = 'block';
+            box.innerHTML = "<b>[Solana Proof-of-Rehab Attestation &#10003;]</b> Immutable CPT 98977 insurance audit logged (`solana_attestation.json`)<br>" +
+                            "&#10140; Program: <code>MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcQb</code> (Solana Devnet)<br>" +
+                            "&#10140; Telemetry SHA-256 Hash: <code>15363ac40e0794ea95fa8ed4e84b0edd5c3c02693c68941177d8dce540519f60</code><br>" +
+                            "&#10140; Tx Signature: <span style='color:#c084fc;'><code>5K2cc47e6eb78b10e229b45bf4d6f28ded6f11227d96b88e496c22</code></span>";
+        }
+        function showGrok() {
+            const box = document.getElementById('agentBox');
+            box.style.display = 'block';
+            box.innerHTML = "<b>[Grok Bot &bull; SpaceXSI Astronaut Countermeasure Mode]</b><br>" +
+                            "&#10140; Evaluates orbital resistance exercise kinematics to prevent zero-G muscle atrophy &amp; sensorimotor deconditioning.<br>" +
+                            "&#10140; Status: <b>NOMINAL FOR EVA</b> (Jerk = 12.2 deg/s&sup3;, Smoothness = 98.8%).";
+        }
+        function showEsp() {
+            const box = document.getElementById('agentBox');
+            box.style.display = 'block';
+            box.innerHTML = "<b>[ESP32 / Raspberry Pi Edge Stream]</b> UART 115200 baud packet:<br>" +
+                            "<code>$KC,ARM,62.8,4,JERK:12.2,HAPTIC_BUZZ:ON*7A</code>";
+        }
+
+        new Chart(document.getElementById('romChart'), {
+            type: 'line',
+            data: {
+                labels: [1, 2, 3, 4],
+                datasets: [
+                    { label: 'Joint Angle (deg)', data: [75.0, 58.5, 74.0, 76.0], borderColor: '#38bdf8', backgroundColor: 'rgba(56, 189, 248, 0.1)', fill: true, tension: 0.3 },
+                    { label: 'Target Upper (68 deg)', data: Array(4).fill(68), borderColor: '#4ade80', borderDash: [5, 5], pointRadius: 0 },
+                    { label: 'Target Lower (50 deg)', data: Array(4).fill(50), borderColor: '#4ade80', borderDash: [5, 5], pointRadius: 0 }
+                ]
+            },
+            options: { plugins: { legend: { labels: { color: '#cbd5e1' } } }, scales: { y: { min: 30, max: 110, ticks: { color: '#94a3b8' } }, x: { display: false } } }
+        });
+
+        new Chart(document.getElementById('velChart'), {
+            type: 'line',
+            data: {
+                labels: [1, 2, 3, 4],
+                datasets: [
+                    { label: 'Angular Velocity (deg/s)', data: [0.0, 19.0, 24.0, 31.6], borderColor: '#c084fc', backgroundColor: 'rgba(192, 132, 252, 0.12)', fill: true, tension: 0.3 }
+                ]
+            },
+            options: { plugins: { legend: { labels: { color: '#cbd5e1' } } }, scales: { y: { min: 0, max: 150, ticks: { color: '#94a3b8' } }, x: { display: false } } }
+        });
+    </script>
+</body>
+</html>

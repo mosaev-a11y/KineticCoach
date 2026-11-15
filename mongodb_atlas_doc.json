@@ -1,0 +1,22 @@
+{
+  "_id": {
+    "$oid": "04374013d5af9f5b5cf6bba6"
+  },
+  "cluster": "KineticCoach-Atlas-Cluster0",
+  "database": "telehealth_rtm",
+  "collection": "biomechanics_sessions",
+  "patient_id": "PT-UA-2026",
+  "timestamp": "2026-11-15T02:11:22.874199+00:00",
+  "exercise_mode": "ARM",
+  "metrics": {
+    "blind_accuracy_pct": 0.0,
+    "guided_accuracy_pct": 100.0,
+    "valid_reps": 4,
+    "rom_min_deg": 62.8,
+    "rom_max_deg": 71.5,
+    "matlab_peak_vel_deg_s": 10.8,
+    "matlab_rms_jerk_deg_s3": 12.2,
+    "smoothness_index_pct": 98.8
+  },
+  "solana_proof_hash": "15363ac40e0794ea95fa8ed4e84b0edd5c3c02693c68941177d8dce540519f60"
+}

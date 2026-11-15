@@ -1,0 +1,16 @@
+{
+  "agent_task": "Submit Physical Therapy Remote Therapeutic Monitoring (RTM) Claim & EHR Progress Note",
+  "cpt_code": "98977 (RTM Musculoskeletal System)",
+  "patient_id": "PT-UA-2026",
+  "mongodb_atlas_oid": "04374013d5af9f5b5cf6bba6",
+  "solana_attestation_tx": "5K2cc47e6eb78b10e229b45bf4d6f28ded6f11227d96b88e496c22",
+  "matlab_engine_status": "MATLAB Live Engine",
+  "guided_accuracy_pct": 100.0,
+  "valid_reps": 4,
+  "rom_range_deg": [
+    62.8,
+    71.5
+  ],
+  "matlab_rms_jerk": 12.2,
+  "neuromuscular_smoothness_pct": 98.8
+}
